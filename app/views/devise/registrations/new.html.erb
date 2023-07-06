@@ -22,6 +22,11 @@
   </div>
 
   <div class="field mt-5">
+    <%= f.label :pfp, 'Foto de perfil (URL)' %> <br>
+    <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp" %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %> <br>
     <%= f.text_field :name, autofocus: true, autocomplete: "new-name" %>
   </div>
@@ -29,7 +34,7 @@
     <%= f.label :phone %> <br>
     <%= f.text_field :phone, autofocus: true, autocomplete: "new-phone" %>
   </div>
-    <div class="field">
+    <div class="field mb-3">
     <%= f.label :age %> <br>
     <%= f.number_field :age, autofocus: true, autocomplete: "new-age" %>
   </div>

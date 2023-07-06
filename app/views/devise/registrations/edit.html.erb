@@ -21,14 +21,18 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field mb-4">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <% if current_user.pfp.present? %>
+    <h2>Foto de perfil actual</h2>
+    <%= image_tag current_user.pfp, class: "col-2 mb-4" %>
+  <%end%>
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :pfp, 'Foto de perfil (URL)' %> <br>
+    <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp" %>
   </div>
 
   <div class="field">
@@ -36,14 +40,19 @@
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %> <!--Ni idea de que haga el autofocus-->
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :phone %> <br>
     <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :age %> <br>
     <%= f.number_field :age, autofocus: true, autocomplete: "age" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">

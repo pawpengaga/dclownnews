@@ -5,9 +5,9 @@
     <%= render "comments/form", comment: @comment %>
   </div>
   
-  <div class="border">
+  <div class="border px-5 py-4">
     <% @comments.each do |comment| %>
-      <%= render comment %>
+      <div class="mb-3"><%= render comment %></div>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,9 @@
 <div id="<%= dom_id comment %>">
-  <p>
-    <span class="fw-bold"><%= comment.user.name %>:</span> 
-    <%= comment.content %>
-  </p>
+  <div class="row">
+    <div class="col-1"><%=image_tag comment.user.pfp, class: "mypfp rounded-circle" %></div>
+    <div class="ms-1 col-5">
+      <span class="fw-bold"><%= comment.user.name%></span> <span class="fst-italic">Created <%= distance_of_time_in_words(comment.created_at, Time.now)%> ago...</span> <br>
+      <%= comment.content %>
+    </div>
+  </div>
 </div>
