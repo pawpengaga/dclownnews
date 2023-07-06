@@ -8,7 +8,8 @@
           <%= link_to "Inicio", root_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <% if user_signed_in? %>
                 <%= link_to 'Mi cuenta' , edit_user_registration_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %> <!--current_user.email-->
-
+                <%= link_to 'Mis publicaciones' , user_publications_path(current_user), class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+                <%= link_to 'Mis comentarios' , user_comments_path(current_user), class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
                 <%= link_to "Salir", destroy_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <%else%>
                 <%= link_to "Entrar", new_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>

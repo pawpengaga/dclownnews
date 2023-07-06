@@ -1,6 +1,8 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
   before_action :authenticate_user! #Autenticador de publicaciones
+  ###############MULTIPLESEMOJISDECALAVERA##############
+  before_action :set_comments, only: %i[ new edit create destroy update ]
 
   # GET /publications or /publications.json
   def index
@@ -62,7 +64,13 @@ class PublicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
-      @publication = Publication.find(params[:id])
+      @publication = Publication.includes(:comments).find(params[:id])
+      @comment = Comment.new
+      @comments = @publication.comments.order(created_at: :desc)
+    end
+
+    def set_comments
+      @comments = Comment.all.pluck(:content, :id)
     end
 
     # Only allow a list of trusted parameters through.

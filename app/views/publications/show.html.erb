@@ -1,5 +1,17 @@
 <%= render @publication %>
 
+<div id="comment-section" class="my-4">
+  <div class="border">
+    <%= render "comments/form", comment: @comment %>
+  </div>
+  
+  <div class="border">
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+</div>
+
 <div>
 
   <%= link_to "Volver", publications_path, class: "btn btn-light mybtn text-white" %>

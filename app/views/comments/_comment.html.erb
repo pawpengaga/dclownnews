@@ -1,17 +1,6 @@
 <div id="<%= dom_id comment %>">
   <p>
-    <strong>Content:</strong>
+    <span class="fw-bold"><%= comment.user.email %>:</span> 
     <%= comment.content %>
   </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= comment.user_id %>
-  </p>
-
-  <p>
-    <strong>Publication:</strong>
-    <%= comment.publication_id %>
-  </p>
-
 </div>
