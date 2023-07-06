@@ -3,6 +3,7 @@
   <head>
     <title>DM6U2NoticiasErick</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +12,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
