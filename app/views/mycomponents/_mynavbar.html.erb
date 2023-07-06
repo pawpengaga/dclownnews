@@ -1,18 +1,18 @@
 <div class="w-100 d-flex justify-content-center">
     <%= image_tag 'logo.png', class: "mylogo text-center my-4" %>
 </div>
-<nav class="navbar navbar-expand-lg mynav">
+<nav class="navbar navbar-expand-lg mynav p-0">
     <div class="container-fluid mx-5">
       <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <%= link_to "Inicio", root_path, class: "nav-link fw-bold text-white mx-4" %>
+          <%= link_to "Inicio", root_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <% if user_signed_in? %>
-                <%= link_to current_user.email, edit_user_registration_path, class: "nav-link fst-italic text-white mx-4" %>
+                <%= link_to current_user.email, edit_user_registration_path, class: "nav-link fst-italic text-white px-4 py-3 mylinks" %>
 
-                <%= link_to "Salir", destroy_user_session_path, class: "nav-link fw-bold text-white mx-4" %>
+                <%= link_to "Salir", destroy_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <%else%>
-                <%= link_to "Entrar", new_user_session_path, class: "nav-link fw-bold text-white mx-4" %>
-                <%= link_to "Registrarse", new_user_registration_path, class: "nav-link fw-bold text-white mx-4" %>
+                <%= link_to "Entrar", new_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+                <%= link_to "Registrarse", new_user_registration_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <%end%>
         </div>
       </div>

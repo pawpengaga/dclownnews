@@ -1,5 +1,10 @@
+body{
+    font-family: 'Karla', sans-serif;
+}
+
 .myalerts{
-    position: relative;
+    position: absolute;
+    bottom: 0;
 }
 
 .mylogo{
@@ -7,4 +12,10 @@
 }
 .mynav{
     background-color: black;
+}
+
+/*************************/
+
+.mylinks:hover{
+    background-color: rgb(228, 30, 96) !important;
 }
