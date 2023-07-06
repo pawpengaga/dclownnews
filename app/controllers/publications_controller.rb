@@ -1,5 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! #Autenticador de publicaciones
 
   # GET /publications or /publications.json
   def index
@@ -22,6 +23,7 @@ class PublicationsController < ApplicationController
   # POST /publications or /publications.json
   def create
     @publication = Publication.new(publication_params)
+    @publication.user_id = current_user.id #Recibidor implicito de autoria
 
     respond_to do |format|
       if @publication.save

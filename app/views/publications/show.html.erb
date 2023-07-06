@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @publication %>
 
 <div>
-  <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-  <%= link_to "Back to publications", publications_path %>
 
-  <%= button_to "Destroy this publication", @publication, method: :delete %>
+  <%= link_to "Volver", publications_path, class: "btn btn-light mybtn text-white" %>
+
+  <%if user_signed_in?%>
+  
+    <%if current_user.id == @publication.user_id%> <!--Solo el autor puede editar sus publicaciones ahora-->
+      <%= link_to "Editar publicación", edit_publication_path(@publication) %> |
+      <%= button_to "Eliminar publicación", @publication, method: :delete %>
+    <%end%>
+  <%end%>
+
 </div>
