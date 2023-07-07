@@ -13,10 +13,10 @@
 
   <div class="row d-flex justify-content-center text-center">
     <div class="col-12">
-      <%= form.label :content, "Publica un comentario", style: "display: block", class: "fs-4" %>
-      <%= form.text_area :content, size: "120x3" %>
+      <%= form.label :content, "Publica un comentario", class: "fs-3 fw-bold me-4" %>
+      <%= form.text_area :content, size: "120x3", class: "form-control mt-3" %>
     </div>
 
-      <div class="col-12"><%= form.submit "Comentar" %></div>
+      <div class="col-12"><%= form.submit "Comentar", class: "btn mybtn px-4 py-2 mt-3" %></div>
   </div>
 <% end %>

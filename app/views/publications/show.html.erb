@@ -1,27 +1,38 @@
 <%= render @publication %>
+<hr>
+<div id="interacion-section" class="text-end">
 
-<div id="comment-section" class="my-4">
-  <div class="border">
-    <%= render "comments/form", comment: @comment %>
-  </div>
-  
-  <div class="border px-5 py-4">
-    <% @comments.each do |comment| %>
-      <div class="mb-3"><%= render partial: "comments/comment", locals: { comment: comment } %></div>
-    <% end %>
-  </div>
-</div>
-
-<div>
-
-  <%= link_to "Volver", publications_path, class: "btn btn-light mybtn text-white" %>
+  <%= link_to "Volver", publications_path, class: "btn btn-light mybtn text-white fw-bold" %>
 
   <%if user_signed_in?%>
   
-    <%if current_user.id == @publication.user_id%> <!--Solo el autor puede editar sus publicaciones ahora-->
-      <%= link_to "Editar publicación", edit_publication_path(@publication) %> |
-      <%= button_to "Eliminar publicación", @publication, method: :delete %>
+    <%if current_user.id == @publication.user_id || current_user.role == 'admin' %><br> <!--Solo el autor puede editar sus publicaciones ahora--> 
+      <%= link_to "Editar entrada", edit_publication_path(@publication), class: "btn btn-light mybtn text-white mt-3" %>
+      <%= button_to "Eliminar entrada", @publication, method: :delete, class: "btn btn-light mybtn text-white mt-3" %>
     <%end%>
   <%end%>
 
 </div>
+
+<div id="comment-section" class="my-4">
+  <div class="border px-5 py-3">
+    <%= render "comments/form", comment: @comment %>
+  </div>
+
+
+
+
+
+  <div class="border px-5 py-4 mt-4">
+    <% @comments.each do |comment| %>
+      <div class="mb-3"><%= render partial: "comments/comment", locals: { comment: comment } %></div>
+    <% end %>
+
+    <% if @publication.comments.empty? %>
+      <p class="text-center">Sé el primero en comentar</p>
+    <% end %>
+  
+  </div>
+</div>
+
+

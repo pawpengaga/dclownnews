@@ -1,14 +1,27 @@
 <h1 class="mb-5">Comentarios de <%= current_user.name %></h1>
 
+<% if current_user.comments.empty? %>
+  <p>No hay comentarios...</p>
+<% end %>
+
 <% @comments.reverse.each do |comment| %>
 <div class="row">
-  <div class="col-1 text-center"><%=image_tag comment.user.pfp, class: "mypfp rounded-circle" %></div>
+  <% if current_user.pfp.present? %>
+    <div class="col-1 text-center"><%=image_tag comment.user.pfp, class: "mypfp rounded-circle" %></div>
+  <%end%>
   <div class="col-10">
     <span class="fw-bold"><%= comment.user.name%></span> <span class="fst-italic">Created <%= distance_of_time_in_words(comment.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
     <%= comment.content %>
     <p class="mt-1">
-      <%= link_to "Ver publicación", publication_path(comment.publication) %>
+      <%= link_to "Ver entrada", publication_path(comment.publication) %>
     </p>
+    <% if current_user.role == 'admin' %>
+    <p class="mt-1">
+      <%= button_to publication_comment_path(publication_id: comment.publication_id, id: comment.id), method: :delete, class: "btn mybtn" do %>
+      Eliminar comentario
+    <% end %>        
+    </p>
+  <%end%>
   </div>
   <hr>
 </div>

@@ -16,7 +16,7 @@
                 <%= link_to edit_user_registration_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" do%>
                 <span>Mi cuenta</span>
                 <%end%> <!--current_user.name-->
-                <%= link_to 'Mis publicaciones' , user_publications_path(current_user), class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
+                <%= link_to 'Mis entradas' , user_publications_path(current_user), class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
                 <%= link_to 'Mis comentarios' , user_comments_path(current_user), class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
                 <%= link_to "Salir", destroy_user_session_path, class: "nav-link fw-bold text-white px-4 py-3 mylinks" %>
             <%else%>

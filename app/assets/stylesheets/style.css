@@ -1,10 +1,16 @@
 :root{
     --accent: rgb(228, 30, 96);
     --seccon: rgb(247, 63, 118);
+
+    --contrast: rgb(3,255,235);
 }
 
 body{
     font-family: 'Karla', sans-serif;
+}
+
+a{
+    color: var(--accent);
 }
 
 .myalerts{
@@ -49,4 +55,8 @@ body{
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.myalertshehe{
+    color: var(--accent);
 }

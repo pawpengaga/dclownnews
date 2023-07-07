@@ -1,55 +1,62 @@
-<h2>Sign up</h2>
+<h2 class="text-center">Registro</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field mt-5">
-    <%= f.label :pfp, 'Foto de perfil (URL)' %> <br>
-    <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %> <br>
-    <%= f.text_field :name, autofocus: true, autocomplete: "new-name" %>
-  </div>
-    <div class="field">
-    <%= f.label :phone %> <br>
-    <%= f.text_field :phone, autofocus: true, autocomplete: "new-phone" %>
-  </div>
-  <div class="field mb-3">
-    <%= f.label :age %> <br>
-    <%= f.number_field :age, autofocus: true, autocomplete: "new-age" %>
-  </div>
-  <div class="field mb-3">
-    <%= f.label :role, "¿Que describe mejor sus actividades en el sitio?" %> <br>
-    <div class="fst-italic">
-      <span>Usuario: Puede leer las noticias y comentar</span><br>
-      <span>Editor: Puede redactar noticias para el diario</span> <br>
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="col-5">
+      <div class="field mb-3">
+        <%= f.label :email, "Correo electrónico", class: "mb-2 fw-bold" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="field mb-3">
+        <%= f.label :password, "Contraseña", class: "mb-2 fw-bold" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="field mb-3">
+        <%= f.label :password_confirmation, "Confirme su contraseña", class: "mb-2 fw-bold" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
     </div>
-    <%= f.select :role, options_for_select({ '1. Usuario' => 0, '2. Editor' => 1 }) %>
+
+    <div class="col-5">
+      <div class="field mb-3">
+        <%= f.label :pfp, 'Foto de perfil (URL)', class: "mb-2 fw-bold" %> <br>
+        <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp", class: "form-control" %>
+      </div>
+      <div class="field mb-3">
+        <%= f.label :name, "Nombre de usuario", class: "mb-2 fw-bold" %> <br>
+        <%= f.text_field :name, autofocus: true, autocomplete: "new-name", class: "form-control" %>
+      </div>
+        <div class="field mb-3">
+        <%= f.label :phone, "Número telefónico", class: "mb-2 fw-bold" %> <br>
+        <%= f.text_field :phone, autofocus: true, autocomplete: "new-phone", class: "form-control" %>
+      </div>
+      <div class="field mb-3">
+        <%= f.label :age, "Edad", class: "mb-2 fw-bold" %> <br>
+        <%= f.number_field :age, autofocus: true, autocomplete: "new-age", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="col-10">
+      <div class="field mb-3">
+        <%= f.label :role, "¿Que describe mejor sus actividades en el sitio?", class: "fw-bold fs-5 mb-3" %> <br>
+        <div class="mb-3">
+          <span class="fw-bold">Usuario:</span> Puede leer las noticias y comentar |
+          <span class="fw-bold">Editor:</span> Puede redactar noticias para el diario <br>
+        </div>
+        <%= f.select :role, options_for_select({ '1. Usuario' => :user, '2. Editor' => :author }, f.object.role), {}, autocomplete: "new-name", class: "form-select mb-4" %>
+      </div>
+      <div class="actions text-center">
+        <%= f.submit "Registrarse", class:"btn mybtn px-5 py-2 mb-3 mt-3" %>
+      </div>
+      <% end %>
+      
+      <div class="text-center"><%= render "devise/shared/links" %></div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

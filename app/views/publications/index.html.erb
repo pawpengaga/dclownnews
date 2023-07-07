@@ -1,25 +1,34 @@
-<div id="publications">
+
+  <!-- ver los posts de un usuario espefifico -->
   <% if show_user_publications %>
+  <div id="publications">
+    <% if current_user.role == 'admin' || current_user.role == 'author' %>
+    <div class="fs-5 btn mybtn py-2"><i class="fa-solid fa-circle-plus text-white"></i><%= link_to "Redactar entrada", new_publication_path, class: "fw-bold ms-2 text-decoration-none text-white" %></div>
+  <% end %>
     <% @publications.reverse.each do |publication| %>
       <% if publication.user_id == params[:user_id].to_i %>
         <div class="border my-5 px-5 py-4">
           <%= render publication %>
           <p class="mb-0">
-            <%= link_to "Ver publicación", publication %>
+            <%= link_to "Ver entrada", publication, class:"mt-4 btn mybtn" %>
           </p>
         </div>
       <% end %>
     <% end %>
   <% else %>
+  <!-- ver los posts de todos los usuarios -->
+      <p class="display-2 text-center">Noticias del día</p>
+      <% if current_user.role == 'admin' || current_user.role == 'author' %>
+        <div class="fs-5 btn mybtn py-2"><i class="fa-solid fa-circle-plus text-white"></i><%= link_to "Redactar entrada", new_publication_path, class: "fw-bold ms-2 text-decoration-none text-white" %></div>
+      <% end %>
     <% @publications.reverse.each do |publication| %>
       <div class="border my-5 px-5 py-4">
         <%= render publication %>
         <p class="mb-0">
-          <%= link_to "Ver publicación", publication %>
+          <%= link_to "Ver entrada", publication, class:"mt-4 btn mybtn" %>
         </p>
       </div>
     <% end %>
   <% end %>
 </div>
 
-<%= link_to "New publication", new_publication_path %>

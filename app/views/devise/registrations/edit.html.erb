@@ -1,84 +1,100 @@
-<p>Editar <%= resource_name.to_s.humanize %></p>
+<h2 class="text-center">Editar <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field mb-4">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <% if current_user.pfp.present? %>
-    <h2>Foto de perfil actual</h2>
-    <%= image_tag current_user.pfp, class: "col-2 mb-4" %>
-  <%end%>
-  <div class="field">
-    <%= f.label :pfp, 'Foto de perfil (URL)' %> <br>
-    <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %> <br>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %> <!--Ni idea de que haga el autofocus-->
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %> <br>
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :age %> <br>
-    <%= f.number_field :age, autofocus: true, autocomplete: "age" %>
-  </div>
-
-  <div class="field mb-3">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field mb-3">
-    <%= f.label :role, "¿Que describe mejor sus actividades en el sitio?" %> <br>
-    <div class="fst-italic">
-      <span>Usuario: Puede leer las noticias y comentar</span><br>
-      <span>Editor: Puede redactar noticias para el diario</span> <br>
+<div class="row d-flex justify-content-center mt-5">
+  
+  <div class="col-8">
+    <div class="field mb-3">
+      <%= f.label :email, "Correo electrónico", class: "mb-2 fw-bold" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
-    <%= f.select :role, options_for_select({ '1. Usuario' => :user, '2. Editor' => :author }, f.object.role), {}, autocomplete: "new-name" %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field mb-3">
+      <%= f.label :name, "Nombre de usuario", class: "mb-2 fw-bold" %> <br>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      <!--Ni idea de que haga el autofocus-->
+    </div>
+    <div class="field mb-3">
+      <%= f.label :phone, "Número telefónico", class: "mb-2 fw-bold" %> <br>
+      <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control" %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :age, "Edad", class: "mb-2 fw-bold" %> <br>
+      <%= f.number_field :age, autofocus: true, autocomplete: "age", class: "form-control" %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :current_password, "Contraseña actual", class: "mb-2 fw-bold" %> <i class="myalertshehe">(Introduzca su contraseña para confirmar los cambios)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-4">
+    <% if current_user.pfp.present? %>
+    <h2 class="d-flex align-items-top fw-bold">
+      <%= image_tag current_user.pfp, class: "col-2 mb-3 me-3 mt-1" %>
+      Foto de <br> perfil actual
+    </h2>
+
+    <%end%>
+    <div class="field mb-3">
+      <%= f.label :pfp, 'Nueva foto de perfil (URL)', class: "mb-2 fw-bold" %> <br>
+      <%= f.text_field :pfp, autofocus: true, autocomplete: "new-pfp", class: "form-control" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= f.label :password, "Nueva contraseña", class: "mb-2 fw-bold" %> <i>(dejar en blanco si no quiere cambiarla)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <% if @minimum_password_length %>
+      <em><%= @minimum_password_length %> caracteres mínimo</em>
+      <% end %>
+    </div>
+    <div class="field mb-4">
+      <%= f.label :password_confirmation, "Repetir nueva contraseña", class: "mb-2 fw-bold" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+</div>
+
+
+<div class="row d-flex justify-content-center mt-4">
+  <div class="col-12">
+    <%if current_user.role == 'admin' %>
+      <p class="fst-italic text-center">El administrador no puede darse de baja de su rol</p>
+    <%else%>
+    <div class="field mb-3">
+      <%= f.label :role, "Actualización de su rol", class: "fw-bold fs-5 mb-3" %> <br>
+      <div class="mb-3">
+        <span class="fw-bold">Usuario:</span> Puede leer las noticias y comentar |
+        <span class="fw-bold">Editor:</span> Puede redactar noticias para el diario <br>
+      </div>
+      <%= f.select :role, options_for_select({ '1. Usuario' => :user, '2. Editor' => :author }, f.object.role), {}, autocomplete: "new-name", class: "form-select" %>
+    </div>
+    <%end%>
+    <div class="actions text-center">
+      <%= f.submit "Actualizar datos", class:"btn mybtn px-5 py-2 mb-3 mt-3" %>
+    </div>
+    <% end %>
+    <%= link_to "Volver", :back , class:"btn mybtn"%>
+    <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <div class="d-flex"><span>Opciones de eliminación</span> <i class=" ms-1 fa-solid fa-sort-down"></i></div>
+    </button>
+    
+    
+    <div class="collapse mt-3" id="collapseExample">
+      <div class="card card-body">
+        <h3>Eliminar mi cuenta</h3>
+        <div>Esta acción no puede deshacerse
+          <%= button_to "ELIMINAR CUENTA", registration_path(resource_name), class: "btn mybtn mt-4 fw-bold", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      </div>
+    </div>
+
+
+    
   </div>
-<% end %>
-
-<button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  <div class="d-flex"><span>Opciones de eliminación</span> <i class=" ms-1 fa-solid fa-sort-down"></i></div>
-</button>
-<div class="collapse" id="collapseExample">
-<div class="card card-body">
-  <h3>Eliminar mi cuenta</h3>
-
-  <div>Esta acción no puede deshacerse <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 </div>
-</div>
-
-
-<%= link_to "Back", :back , class:"d-block"%>

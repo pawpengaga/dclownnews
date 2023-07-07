@@ -8,4 +8,4 @@
 
 #Generar aqui la seed para un futuro superadmin
 
-User.create!(email: "admin@admin", name: "admin", password: "admin")
+User.create!(email: "admin@admin", name: "admin", password: "admin", role: 2)

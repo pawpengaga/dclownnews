@@ -11,24 +11,25 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
 
 
-
-  <div>
-    <%= form.submit %>
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="col-8">
+      <div class="mb-3">
+        <%= form.label :title, "Título", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_field :title, class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :image, "Imagen de cabecera (URL)", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_field :image, class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :description, "Cuerpo de la noticia", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_area :description, size: "120x15", class:"form-control" %>
+      </div>
+      <div class="d-flex justify-content-end">
+        <%= form.submit "Subir noticia", class:"btn mybtn fw-bold" %>
+      </div>
+    </div>
   </div>
 <% end %>

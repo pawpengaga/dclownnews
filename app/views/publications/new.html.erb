@@ -1,9 +1,7 @@
-<h1>New publication</h1>
+<h1 class="text-center">Redactar noticia</h1>
 
 <%= render "form", publication: @publication %>
 
-<br>
-
-<div>
-  <%= link_to "Back to publications", publications_path %>
+<div class="row d-flex justify-content-center mt-4 text-end">
+  <div class="col-8"><%= link_to "Volver", publications_path, class:"btn mybtn" %></div>
 </div>
