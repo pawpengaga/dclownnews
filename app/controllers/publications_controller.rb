@@ -4,14 +4,9 @@ class PublicationsController < ApplicationController
   ###############MULTIPLESEMOJISDECALAVERA##############
   before_action :set_comments, only: %i[ new edit create destroy update ]
 
-  before_action only: [:new, :create] do #Restriccion 1
+  before_action only: [:new, :create, :edit, :update, :destroy] do #Restriccion 1
     authorize_request(["author", "admin"])
   end
-
-  before_action only: [:edit, :update, :destroy] do #Restriccion 2
-    authorize_request(["admin"])
-  end
-
 
   # GET /publications or /publications.json
   def index

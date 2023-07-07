@@ -1,9 +1,13 @@
 
+
   <!-- ver los posts de un usuario espefifico -->
   <% if show_user_publications %>
   <div id="publications">
     <% if current_user.role == 'admin' || current_user.role == 'author' %>
     <div class="fs-5 btn mybtn py-2"><i class="fa-solid fa-circle-plus text-white"></i><%= link_to "Redactar entrada", new_publication_path, class: "fw-bold ms-2 text-decoration-none text-white" %></div>
+    <% if current_user.publications.count == 0 %>
+      <p class="text-center">No hay entradas a tu nombre</p>
+    <% end %>
   <% end %>
     <% @publications.reverse.each do |publication| %>
       <% if publication.user_id == params[:user_id].to_i %>
@@ -20,6 +24,9 @@
       <p class="display-2 text-center">Noticias del día</p>
       <% if current_user.role == 'admin' || current_user.role == 'author' %>
         <div class="fs-5 btn mybtn py-2"><i class="fa-solid fa-circle-plus text-white"></i><%= link_to "Redactar entrada", new_publication_path, class: "fw-bold ms-2 text-decoration-none text-white" %></div>
+        <% if @publications.count == 0 %>
+          <p class="text-center">No hay entradas a tu nombre</p>
+        <% end %>
       <% end %>
     <% @publications.reverse.each do |publication| %>
       <div class="border my-5 px-5 py-4">
