@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     #Experimental
     @comment.user_id = current_user.id
-    @comment.publication_id = params[:publication_id]
+    @comment.publication_id = params[:publication_id]#[:comment] #:comments fue añadido para los tests
 
     respond_to do |format|
       if @comment.save
@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to publication_url(@comment.publication, anchor: "comment-#{@comment.id}"), notice: "Comment was successfully updated." }
+        format.html { redirect_to publication_url(@comment.publication), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }

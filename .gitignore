@@ -6,6 +6,7 @@
 
 #MySecrets
 /config/application.yml
+.vscode
 
 # Ignore bundler config.
 /.bundle

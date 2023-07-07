@@ -64,9 +64,12 @@ class PublicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
-      @publication = Publication.includes(:comments).find(params[:id])
+      # @publication = Publication.includes(:comments).find(params[:id])
+      # @comment = Comment.new
+      # @comments = @publication.comments.order(created_at: :desc)
+      @publication = Publication.includes(:comments).find_by(id: params[:id])
       @comment = Comment.new
-      @comments = @publication.comments.order(created_at: :desc)
+      @comments = @publication.comments.order(created_at: :desc) if @publication
     end
 
     def set_comments

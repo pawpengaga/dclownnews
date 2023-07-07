@@ -7,7 +7,7 @@
   
   <div class="border px-5 py-4">
     <% @comments.each do |comment| %>
-      <div class="mb-3"><%= render comment %></div>
+      <div class="mb-3"><%= render partial: "comments/comment", locals: { comment: comment } %></div>
     <% end %>
   </div>
 </div>

@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  image: MyString
-  title: MyString
-  description: MyText
+  image: http://example.com/image1.jpg
+  title: Publicación 1
+  description: Descripción de la publicación 1
   user: one
 
 two:
-  image: MyString
-  title: MyString
-  description: MyText
+  image: http://example.com/image2.jpg
+  title: Publicación 2
+  description: Descripción de la publicación 2
   user: two
