@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<p>Editar <%= resource_name.to_s.humanize %></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -55,13 +55,30 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field mb-3">
+    <%= f.label :role, "¿Que describe mejor sus actividades en el sitio?" %> <br>
+    <div class="fst-italic">
+      <span>Usuario: Puede leer las noticias y comentar</span><br>
+      <span>Editor: Puede redactar noticias para el diario</span> <br>
+    </div>
+    <%= f.select :role, options_for_select({ '1. Usuario' => :user, '2. Editor' => :author }, f.object.role), {}, autocomplete: "new-name" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <div class="d-flex"><span>Opciones de eliminación</span> <i class=" ms-1 fa-solid fa-sort-down"></i></div>
+</button>
+<div class="collapse" id="collapseExample">
+<div class="card card-body">
+  <h3>Eliminar mi cuenta</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+  <div>Esta acción no puede deshacerse <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+</div>
+</div>
 
-<%= link_to "Back", :back %>
+
+<%= link_to "Back", :back , class:"d-block"%>

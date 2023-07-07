@@ -40,3 +40,13 @@ body{
 .mypfp{
     width: 4rem;
 }
+
+.mysession{
+    width: 2rem;
+}
+
+.user-reverlator{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

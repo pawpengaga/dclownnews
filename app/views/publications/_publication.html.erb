@@ -1,7 +1,11 @@
 <div id="<%= dom_id publication %>">
 
-  <p class="fw-bold display-3">
+  <p class="fw-bold display-3 m-0">
     <%= publication.title %>
+  </p>
+  <p class="fs-4">
+    <strong>Por:</strong>
+    <%= publication.user.name %>
   </p>
 
   <p>
@@ -12,9 +16,6 @@
     <%= publication.description %>
   </p>
 
-  <p>
-    <strong>Por:</strong>
-    <%= publication.user.name %>
-  </p>
+
 
 </div>

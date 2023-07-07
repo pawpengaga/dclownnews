@@ -1,8 +1,16 @@
-<h1>Comentarios del Usuario</h1>
+<h1 class="mb-5">Comentarios de <%= current_user.name %></h1>
 
-<% @comments.each do |comment| %>
-  <p>
-    <%= link_to "Ver publicación", publication_path(comment.publication) %>: 
+<% @comments.reverse.each do |comment| %>
+<div class="row">
+  <div class="col-1 text-center"><%=image_tag comment.user.pfp, class: "mypfp rounded-circle" %></div>
+  <div class="col-10">
+    <span class="fw-bold"><%= comment.user.name%></span> <span class="fst-italic">Created <%= distance_of_time_in_words(comment.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
     <%= comment.content %>
-  </p>
+    <p class="mt-1">
+      <%= link_to "Ver publicación", publication_path(comment.publication) %>
+    </p>
+  </div>
+  <hr>
+</div>
+
 <% end %>

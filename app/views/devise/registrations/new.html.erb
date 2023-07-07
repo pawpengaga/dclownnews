@@ -34,9 +34,17 @@
     <%= f.label :phone %> <br>
     <%= f.text_field :phone, autofocus: true, autocomplete: "new-phone" %>
   </div>
-    <div class="field mb-3">
+  <div class="field mb-3">
     <%= f.label :age %> <br>
     <%= f.number_field :age, autofocus: true, autocomplete: "new-age" %>
+  </div>
+  <div class="field mb-3">
+    <%= f.label :role, "¿Que describe mejor sus actividades en el sitio?" %> <br>
+    <div class="fst-italic">
+      <span>Usuario: Puede leer las noticias y comentar</span><br>
+      <span>Editor: Puede redactar noticias para el diario</span> <br>
+    </div>
+    <%= f.select :role, options_for_select({ '1. Usuario' => 0, '2. Editor' => 1 }) %>
   </div>
 
   <div class="actions">

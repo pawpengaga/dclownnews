@@ -11,14 +11,12 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-2">
-      <%= form.label :content, style: "display: block" %>
-      <%= form.text_area :content %>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-12">
+      <%= form.label :content, "Publica un comentario", style: "display: block", class: "fs-4" %>
+      <%= form.text_area :content, size: "120x3" %>
     </div>
 
-    <div class="col-2">
-      <%= form.submit %>
-    </div>
+      <div class="col-12"><%= form.submit "Comentar" %></div>
   </div>
 <% end %>
